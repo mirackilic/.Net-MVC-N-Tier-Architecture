@@ -1,0 +1,62 @@
+﻿@model Tuple<List<Product>, List<Category>>
+
+
+@section Deneme{
+
+
+    <p class="lead">Shop Name</p>
+    <div class="list-group">
+        @foreach (Category item in Model.Item2)
+        {
+            @Html.ActionLink(item.CategoryName, "SelecyByCategory", new { id = item.ID }, new { @class = "list-group-item" })
+        }
+
+
+    </div>
+
+}
+
+@if (TempData["message"] != null)
+{
+    @TempData["message"] 
+}
+
+@Html.ActionLink("Sepet Sayfası", "CartPage")
+<div class="col-md-9">
+
+    <div class="row">
+
+
+
+        @foreach (Product item in Model.Item1)
+        {
+            //ToDo(Ödev)
+
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+
+                    <img src="~/Pictures/49438975_2427802897234445_3907616440525520896_o.jpg" title="@item.ProductName" alt="@item.ProductName.Substring(0, 2)" />
+                    <div class="caption">
+                        <h4 class="pull-right">@(Convert.ToInt32(item.UnitPrice).ToString("C2"))</h4>
+                        <h4>
+                            <a href="/Member/ProductDetail/@item.ID">@item.ProductName</a>
+                        </h4>
+                        <p> @Html.ActionLink("Sepete At", "AddToCart", new { id = item.ID })    </p>  
+                        <p class="pull-right">Stoktaki Ürün=>  @item.UnitsInStock</p>
+
+                    </div>
+                    <div class="ratings">
+                      
+
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>
+
+
+
+</div>
+

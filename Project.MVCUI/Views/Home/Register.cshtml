@@ -1,0 +1,117 @@
+﻿@model Tuple<AppUser,AppUserDetail>
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <style>
+        .field-validation-error{
+            color:red;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="panel panel-default">
+        <div class="panel panel-body">
+
+            @if (ViewBag.ZatenVar!=null)
+            {
+            <h1 style="color:red">@ViewBag.ZatenVar </h1>
+            }
+
+
+            @using (Html.BeginForm("Register","Home",FormMethod.Post))
+            {
+                <div>
+                    İsim Giriniz
+                </div>
+
+                <div>
+                    @Html.TextBoxFor(x=>x.Item2.FirstName)  <br />
+                    @Html.ValidationMessageFor(x=>x.Item2.FirstName)
+                </div>
+
+                <div>
+                    Soyisim Giriniz
+                </div>
+                <div>
+                    @Html.TextBoxFor(x => x.Item2.LastName)   <br />
+                    @Html.ValidationMessageFor(x => x.Item2.LastName)
+                </div>
+
+                <div>
+                    Dogum Tarihinizi Giriniz
+                </div>
+
+                <div>
+                    @Html.TextBoxFor(x => x.Item2.BirthDate, new {data_format="dd/MM/yyyy"})
+                </div>
+
+                <div>
+                   @Html.LabelFor(x=>x.Item1.UserName)
+                </div>
+                <div>
+                    @Html.TextBoxFor(x => x.Item1.UserName)   <br />
+
+                    @Html.ValidationMessageFor(x => x.Item1.UserName)
+                </div>
+
+                <div>
+                    Email adresinizi giriniz
+                </div>
+                <div>
+                    @Html.TextBoxFor(x => x.Item1.Email)    <br />
+                    @Html.ValidationMessageFor(x => x.Item1.Email)
+                </div>
+                <div>
+                    Sifre Giriniz
+                </div>
+                <div>
+                    @Html.PasswordFor(x => x.Item1.Password)    <br />
+
+                    @Html.ValidationMessageFor(x => x.Item1.Password)
+                </div>
+
+                <div>
+                    Sifrenizi Tekrar Giriniz
+                </div>
+
+                <div>
+                    @Html.PasswordFor(x => x.Item1.RePassword)    <br />
+
+                    @Html.ValidationMessageFor(x => x.Item1.RePassword)
+                </div>
+
+               <div>
+                   <button class="btn btn-primary">
+                       Kayıt Ol!
+                   </button>
+               </div>
+
+            }
+
+
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>

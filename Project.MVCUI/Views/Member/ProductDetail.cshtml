@@ -1,0 +1,78 @@
+﻿
+
+@model Tuple<List<Category>, Product>
+
+
+@section Deneme{
+
+
+    <p class="lead">Shop Name</p>
+    <div class="list-group">
+        @foreach (Category item in Model.Item1)
+        {
+            @Html.ActionLink(item.CategoryName, "SelecyByCategory", new { id = item.ID }, new { @class = "list-group-item" })
+        }
+
+
+    </div>
+
+}
+
+
+
+        <div class="col-md-9">
+
+            <div class="panel panel-default">
+
+                <div class="panel panel-primary">
+                    <div>
+                        <img src="@Model.Item2.ImagePath" style="width:300px;height:150px" />
+                    </div>
+                    <div>
+                        Ürün İsmi => <span>  @Model.Item2.ProductName      </span>
+                    </div>
+
+
+                    <div>
+                        Ürün Fiyatı =>   <span>@Model.Item2.UnitPrice     </span>
+                    </div>
+
+                    <div>
+                        Urun Stogu => <span>   @Model.Item2.UnitsInStock    </span>
+                    </div>
+
+
+                    <div>
+                        @if (Model.Item2.Category != null)
+                        {
+                            @:Kategorisi =><span> @Model.Item2.Category.CategoryName    </span>
+                        }
+                        else
+                        {
+                            <span>   Diger Urunler      </span>
+                        }
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+     
+
+
+

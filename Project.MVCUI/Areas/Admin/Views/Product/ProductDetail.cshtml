@@ -1,0 +1,77 @@
+﻿@model Product
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Deneme{
+
+
+    <p class="lead">Shop Name</p>
+    <div class="list-group">
+        @Html.ActionLink("Kategoriler", "CategoryList", "Category", null, new { @class = "list-group-item" })
+        @Html.ActionLink("Urunler", "ProductList", "Product", null, new { @class = "list-group-item" })
+        @Html.ActionLink("Kullanıcılar", "AppUserList", "AppUser", null, new { @class = "list-group-item" })
+        @Html.ActionLink("Profiller", "AppUserDetailList", "AppUserDetail", null, new { @class = "list-group-item" })
+        @Html.ActionLink("Tedarikciler", "SupplierList", "Supplier", null, new { @class = "list-group-item" })
+
+
+    </div>
+
+}
+
+
+
+<div class="col-md-9">
+
+    <div class="panel panel-default">
+
+        <div class="panel panel-primary">
+            <div>
+                <img src="@Model.ImagePath" style="width:300px;height:150px" />
+            </div>
+            <div>
+                Ürün İsmi => <span>  @Model.ProductName      </span>
+            </div>
+
+
+            <div>
+                Ürün Fiyatı =>   <span>@Model.UnitPrice     </span>
+            </div>
+
+            <div>
+                Urun Stogu => <span>   @Model.UnitsInStock    </span>
+            </div>
+
+
+            <div>
+                @if (Model.Category != null)
+                {
+                    @:Kategorisi =><span> @Model.Category.CategoryName    </span>
+                }
+                else
+                {
+                    <span>   Diger Urunler      </span>
+                }
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+</div>
+
+

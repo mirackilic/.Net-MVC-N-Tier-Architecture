@@ -1,0 +1,21 @@
+﻿@model Order
+
+@{
+    ViewBag.Title = "SiparisVer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SiparisVer</h2>
+
+@using (Html.BeginForm("SiparisVer", "Member", FormMethod.Post))
+{
+    <div>Adres Gir</div>
+    <div>
+        @Html.TextBoxFor(x=>x.ShippedAddress)
+    </div>
+    <div>
+        <button class="btn btn-primary">
+            Sipariş Ver
+        </button>
+    </div>
+}

@@ -1,0 +1,58 @@
+﻿@model List<Product>
+
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+@{
+    ViewBag.Title = "CategoryList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Deneme{
+
+    @Html.ActionLink("Kategoriler", "CategoryList", "Category", null, new { @class = "list-group-item" })
+    @Html.ActionLink("Urunler", "ProductList", "Product", null, new { @class = "list-group-item" })
+    @Html.ActionLink("Kullanıcılar", "AppUserList", "AppUser", null, new { @class = "list-group-item" })
+    @Html.ActionLink("Profiller", "AppUserDetailList", "AppUserDetail", null, new { @class = "list-group-item" })
+    @Html.ActionLink("Tedarikciler", "SupplierList", "Supplier", null, new { @class = "list-group-item" })
+
+}
+
+@Html.ActionLink("Ürün Ekle", "AddProduct", null, new { @class = "btn btn-primary" })
+
+<div class="col-md-9">
+
+    <div class="panel panel-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Ürün İsmi</th>
+                    <th>Ürün Fiyat</th>
+                    <th>Ürün Stok</th>
+                    <th>Güncelle</th>
+                    <th>Sil  </th>
+                    <th>Urun Detay</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Product item in Model)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.UnitPrice</td>
+                        <td>@item.UnitsInStock</td>
+                        <td>@Html.ActionLink("Güncelle", "UpdateProduct", new { id = item.ID }, new { @class = "btn btn-warning" })</td>
+                        <td>@Html.ActionLink("Sil", "DeleteProduct", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
+                        <td>@Html.ActionLink("Detay","ProductDetail",new { id=item.ID},new {@class="btn btn-success" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

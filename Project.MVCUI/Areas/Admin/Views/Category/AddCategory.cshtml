@@ -1,0 +1,30 @@
+﻿@model Category
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddCategory</h2>
+
+<div class="col-md-9">
+   @using(Html.BeginForm("AddCategory","Category",FormMethod.Post))
+   {
+       <div>
+           Kategori İsmi Giriniz
+       </div>
+       <div>
+           @Html.TextBoxFor(x => x.CategoryName, new {@class="form-control" })
+       </div>
+       <div>
+           Acıklama Giriniz
+       </div>
+       <div>
+           @Html.TextBoxFor(x => x.Description, new { @class="form-control"})
+       </div>
+       <div>
+           <button class="btn btn-primary"> Ekle </button>
+       </div>
+   }
+
+
+</div>

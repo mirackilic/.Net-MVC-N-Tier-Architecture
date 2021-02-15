@@ -1,0 +1,47 @@
+﻿@model List<Category>
+
+
+@{
+    ViewBag.Title = "CategoryList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Deneme{
+
+    @Html.ActionLink("Kategoriler", "CategoryList", "Category", null, new { @class = "list-group-item" })
+    @Html.ActionLink("Urunler", "ProductList", "Product", null, new { @class = "list-group-item" })
+    @Html.ActionLink("Kullanıcılar", "AppUserList", "AppUser", null, new { @class = "list-group-item" })
+    @Html.ActionLink("Profiller", "AppUserDetailList", "AppUserDetail", null, new { @class = "list-group-item" })
+    @Html.ActionLink("Tedarikciler", "SupplierList", "Supplier", null, new { @class = "list-group-item" })
+
+}
+
+@Html.ActionLink("Kategori Ekle", "AddCategory", null, new {@class="btn btn-primary" })
+
+<div class="col-md-9">
+
+    <div class="panel panel-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th> Kategori İsmi</th>
+                    <th>Kategori Acıklaması</th>
+                    <th> Güncelle</th>
+                    <th>Sil  </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Category item in Model)
+                {
+                <tr>
+                    <td>@item.CategoryName</td>
+                    <td>@item.Description</td>
+                    <td>@Html.ActionLink("Güncelle", "UpdateCategory", new { id = item.ID }, new { @class = "btn btn-warning" })</td>
+                    <td>@Html.ActionLink("Sil", "DeleteCategory", new { id = item.ID }, new { @class = "btn btn-warning" })</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "RegisterOk";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <div class="main-content">
+        <div class="text-success">
+            <h2>
+                
+                Tebrikler!! Kayıt olmayı basarınız..
+                
+                Lütfen E-Mail adresinize gönderdigimiz aktivasyon linkine basarak hesabınızı aktive ediniz. Hesabınızı aktive etmeden alısveriş yapamazsınız
+
+
+            </h2>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        setTimeout(function () {
+            window.location = "/Home/Login";
+        }, 10000)
+    });
+</script>
